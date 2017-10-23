@@ -1,3 +1,4 @@
+@import "../common/stars.wxss" ;
 .board {
   box-sizing: border-box;
   background-color: #f8f8f8;
@@ -5,7 +6,7 @@
 .board-item {
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  /*cursor: pointer;*/
   font-size: 20rpx;
   padding: 20rpx;
   background-color: #fff;
@@ -27,7 +28,7 @@
   height: 35rpx;
   background-color: #3fbc54;
   position: absolute;
-  left: -5rpx;
+  left: -4rpx;
 }
 .board-item .title text {
   flex: 1;
@@ -41,12 +42,12 @@
   margin-left: 6rpx;
 }
 .board-item .content {
-  height: 320rpx;
+  height: 330rpx;
 }
 .board-item .content .inner {
   display: flex;
   flex-direction: row;
-  height: 320rpx;
+  height: 330rpx;
   width: 900rpx;
 }
 .board-item .content .inner .movie-item {
@@ -55,20 +56,17 @@
   width: 180rpx;
   margin: 10rpx;
 }
-.board-item .content .inner .movie-item image {
+.board-item .content .inner .movie-item>image {
   width: 180rpx;
   height: 250rpx;
 }
-.board-item .content .inner .movie-item text {
+.board-item .content .inner .movie-item>text {
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: bold;
   line-height: 1.8;
+  margin-top: 10rpx;
 }
-.board-item .content .inner .movie-item .average{
-  color: #f8bd1b;
-  line-height: 1.2;
-  vertical-align: bottom;
-}
+

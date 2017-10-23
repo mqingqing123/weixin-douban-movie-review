@@ -25,13 +25,13 @@ Page({
 
     this.setData({ subtitle: '加载中...', loading: true });
 
-    return app.douban.find('search', this.data.page++, this.data.size, this.data.search).then(function (dt) {
+    return app.douban.find('search', this.data.page++, this.data.size, this.data.search).then(function(dt) {
       if (dt.subjects.length) {
         _this.setData({ subtitle: dt.title, movies: _this.data.movies.concat(dt.subjects), loading: false });
       } else {
         _this.setData({ hasMore: false, loading: false });
       }
-    }).catch(function (e) {
+    }).catch(function(e) {
       _this.setData({ subtitle: '获取数据异常', loading: false });
       console.error(e);
     });
@@ -50,7 +50,7 @@ Page({
    */
   onPullDownRefresh: function onPullDownRefresh() {
     this.setData({ movies: [], page: 1 });
-    this.loadMore().then(function () {
+    this.loadMore().then(function() {
       return app.wechat.original.stopPullDownRefresh();
     });
   },
@@ -58,4 +58,3 @@ Page({
     this.loadMore();
   }
 });
-

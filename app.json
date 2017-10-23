@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/splash/splash",
     "pages/board/board",
+    "pages/splash/splash",
+    
     "pages/list/list",
     "pages/item/item",
     "pages/search/search",

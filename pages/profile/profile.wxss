@@ -9,7 +9,7 @@
 
 .about_ {
   flex-direction: column;
-  margin: 10rpx 0 20rpx 20rpx;
+  margin: 15rpx 0 20rpx 20rpx;
   /*border-bottom: gray solid 0.1px;*/
   font-size: 14px;
 }

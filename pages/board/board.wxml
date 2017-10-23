@@ -1,3 +1,4 @@
+<import src="../common/stars.wxml" />
 <view class="container">
   <view class="board" scroll-y="true">
     <block wx:for="{{ boards }}" wx:key="key">
@@ -16,7 +17,7 @@
               <view class="movie-item">
                 <image src="{{ item.images.large }}" mode="aspectFill" />
                 <text>{{ item.title }}</text>
-                <text class="average">{{"评分:" + item.rating.average }}</text>
+                <template is="starsTemplate" data="{{ stars:item.rating.stars/10, score: item.rating.average }}" />
               </view>
             </navigator>
           </view>
@@ -25,12 +26,12 @@
               <view class="movie-item">
                 <image src="{{ item.subject.images.large }}" mode="aspectFill" />
                 <text>{{ item.subject.title }}</text>
-                <text class="average">{{ "评分:" + item.subject.rating.average }}</text>
-              </view>
+                <template is="starsTemplate" data="{{ stars:item.subject.rating.stars/10, score: item.subject.rating.average }}" />
+                </view>
             </navigator>
-          </view>
+            </view>
         </scroll-view>
-      </view>
+        </view>
     </block>
+    </view>
   </view>
-</view>
