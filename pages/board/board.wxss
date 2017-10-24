@@ -25,7 +25,7 @@
   display: inline-flex;  
   content:'';
   width: 10rpx;
-  height: 35rpx;
+  height: 33rpx;
   background-color: #3fbc54;
   position: absolute;
   left: -4rpx;

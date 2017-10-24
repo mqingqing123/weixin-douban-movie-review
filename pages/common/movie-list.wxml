@@ -1,7 +1,7 @@
 <import src="stars.wxml" />
 <!-- 渲染普通的单项数据 -->
 <template name="item1">
-  <navigator class="item" url="../item/item?id={{ item.id }}">
+  <navigator class="item" hover-class="none" url="../item/item?id={{ item.id }}">
     <image src="{{ item.images.large }}" mode="aspectFill" />
     <text>{{ item.title }}</text>
     <template is="starsTemplate" data="{{ stars:item.rating.stars/10, score: item.rating.average }}" />
@@ -9,7 +9,7 @@
 </template>
 <!-- 在北美电影排行的API中数据格式与普通的API不同，这里是渲染北美电影排行的数据 -->
 <template name="item2">
-  <navigator class="item" url="../item/item?id={{ item.subject.id }}">
+  <navigator class="item" hover-class="none" url="../item/item?id={{ item.subject.id }}">
     <image src="{{ item.subject.images.large }}" mode="aspectFill" />
     <text>{{ item.subject.title }}</text>
     <template is="starsTemplate" data="{{ stars:item.subject.rating.stars/10, score: item.subject.rating.average }}" />

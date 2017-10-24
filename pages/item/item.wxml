@@ -1,19 +1,72 @@
+<import src="../common/stars.wxml" />
 <view class="container">
   <loading hidden="{{ !loading }}">加载中...</loading>
-  <image wx:if="{{ movie.images.large }}" class="background" src="{{ movie.images.large }}" mode="aspectFill" />
-  <block wx:if="{{ movie.title }}">
-    <view class="meta">
-      <image class="poster" src="{{ movie.images.large }}" mode="aspectFit" />
-      <text class="title">{{ movie.title }}({{ movie.year }})</text>
-      <text class="info">评分：{{ movie.rating.average }}</text>
-      <text class="info">导演：<block wx:for="{{ movie.directors }}" wx:key="id"> {{ item.name }} </block></text>
-      <text class="info">主演：<block wx:for="{{ movie.casts }}" wx:key="id"> {{ item.name }} </block></text>
-      <text class="info">类型：<block wx:for="{{ movie.genres }}" wx:key="id"> {{ item }} </block></text>
-      <text class="info">国家：<block wx:for="{{ movie.countries }}" wx:key="id"> {{ item }} </block></text>
+  <view wx:if="{{movie.images.large}}">
+    <image class="head-img" src="{{movie.images.large}}" mode="aspectFill"/>
+    <view class="head-img-hover">
+      <text class="main-title">{{movie.title}}</text>
+      <view class="sub-title">
+        <block wx:for="{{movie.countries}}" wx:key="index">
+          {{item+" · "}}
+        </block>
+        {{movie.year}}
+      </view>
+      <view class="like">
+        <text class="highlight-font">{{movie.wish_count}}</text>
+        <text class="plain-font">人喜欢</text>
+        <text class="highlight-font">{{movie.reviews_count}}</text>
+        <text class="plain-font">条评论</text>
+      </view>
     </view>
+    <image class="movie-img" src="{{movie.images.large}}" data-src="{{movie.images.large}}" bindtap="viewPostImg"/>
     <view class="summary">
-      <text class="label">摘要：</text>
-      <text class="content">{{ movie.summary }}</text>
+      <view class="original-title">
+        <text>{{movie.original_title}}</text>
+      </view>
+      <view class="flex-row">
+        <text class="mark">评分</text>
+        <template is="starsTemplate" data="{{stars:movie.rating.stars, score:movie.rating.average}}" />
+      </view>
+      <view class="flex-row">
+        <text class="mark">导演</text>
+        <text wx:for="{{movie.directors}}" wx:key="index">{{item.name+''}}</text>
+      </view>
+      <view class="flex-row">
+        <text class="mark">影人</text>
+        <block wx:for="{{movie.casts}}" wx:key="index">{{item.name+' '}}</block>
+      </view>
+      <view class="flex-row">
+        <text class="mark">类型</text>
+        <block wx:for="{{movie.genres}}" wx:key="index">{{item+' '}}</block>
+      </view>
     </view>
-  </block>
+    <view class="hr"></view>
+    <view class="synopsis">
+      <text class="synopsis-font">{{movie.title}}的剧情简介</text>
+      <text class="summary-content">{{movie.summary}}</text>
+    </view>
+    <view class="hr"></view>
+    <view class="cast">
+      <text class="cast-font"> 导演 </text>
+      <scroll-view class="cast-imgs" scroll-x="true" style="width:100%">
+        <block wx:for="{{movie.directors}}" wx:for-item="item" wx:key="index">
+          <view class="cast-container">
+            <image class="cast-img" src="{{item.avatars.large}}" data-src="{{item.avatars.large}}" bindtap="viewPostImg"></image>
+            <text class="cast-name">{{item.name}}</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="cast">
+      <text class="cast-font"> 影人 </text>
+      <scroll-view class="cast-imgs" scroll-x="true" style="width:100%">
+        <block wx:for="{{movie.casts}}" wx:for-item="item" wx:key="index">
+          <view class="cast-container">
+            <image class="cast-img" src="{{item.avatars.large}}" data-src="{{item.avatars.large}}" bindtap="viewPostImg"></image>
+            <text class="cast-name">{{item.name}}</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
 </view>

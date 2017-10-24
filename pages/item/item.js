@@ -20,10 +20,10 @@ Page({
   onLoad: function onLoad(params) {
     var _this = this;
 
-    app.douban.findOne(params.id).then(function (d) {
+    app.douban.findOne(params.id).then(function(d) {
       _this.setData({ title: d.title, movie: d, loading: false });
       wx.setNavigationBarTitle({ title: d.title });
-    }).catch(function (e) {
+    }).catch(function(e) {
       _this.setData({ title: '获取数据异常', movie: {}, loading: false });
       console.error(e);
     });
@@ -70,9 +70,17 @@ Page({
   },
   onShareAppMessage: function onShareAppMessage() {
     return {
-      title: '自定义分享标题',
-      desc: '自定义分享描述',
+      title: this.data.title,
+      desc: '豆瓣影评小程序',
       path: '/pages/item?id=' + this.data.id
     };
-  }
+  },
+  /*查看图片*/
+  viewPostImg: function(e) {
+    var src = e.currentTarget.dataset.src;
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: [src] // 需要预览的图片http链接列表
+    })
+  },
 });
