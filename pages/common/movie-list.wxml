@@ -1,0 +1,33 @@
+<import src="stars.wxml" />
+<!-- 渲染普通的单项数据 -->
+<template name="item1">
+  <navigator class="item" hover-class="none" url="../item/item?id={{ item.id }}">
+    <image src="{{ item.images.large }}" mode="aspectFill" />
+    <text>{{ item.title }}</text>
+    <template is="starsTemplate" data="{{ stars:item.rating.stars/10, score: item.rating.average }}" />
+  </navigator>
+</template>
+<!-- 在北美电影排行的API中数据格式与普通的API不同，这里是渲染北美电影排行的数据 -->
+<template name="item2">
+  <navigator class="item" hover-class="none" url="../item/item?id={{ item.subject.id }}">
+    <image src="{{ item.subject.images.large }}" mode="aspectFill" />
+    <text>{{ item.subject.title }}</text>
+    <template is="starsTemplate" data="{{ stars:item.subject.rating.stars/10, score: item.subject.rating.average }}" />
+  </navigator>
+</template>
+<!-- 电影列表组件 供每一个列表展示的页面使用 -->
+<template name="movie-list">
+  <view class="list">
+    <template is="{{ item.subject ? 'item2' : 'item1' }}" data="{{ item }}" wx:for="{{ movies }}" wx:key="id" />
+    <view class="tips">
+      <view wx:if="{{ hasMore }}">
+        <image src="/images/loading.gif" mode="aspectFill" />
+        <text>数据的加载中...</text>
+      </view>
+      <view wx:else>
+        <text>没有更多内容了</text>
+      </view>
+    </view>
+  </view>
+  <!-- <loading hidden="{{ !loading }}">数据加载中...</loading> -->
+</template>

@@ -11,7 +11,7 @@ function fetchApi (type, params) {
  * @param  {Number} longitude  纬度
  * @return {Promise}       包含抓取任务的Promise
  */
-function getCityName (latitude = 39.90403, longitude = 116.407526) {
+function getCityName(latitude = 30.67994285, longitude = 104.06792346) {
   const params = { location: `${latitude},${longitude}`, output: 'json', ak: 'B61195334f65b9e4d02ae75d24fa2c53' }
   return fetchApi('geocoder/v2/', params)
     .then(res => res.data.result.addressComponent.city)

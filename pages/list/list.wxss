@@ -1,0 +1,2 @@
+@import "../common/stars.wxss";
+@import "../common/movie-list.wxss";

@@ -1,0 +1,2 @@
+<import src="../common/movie-list" />
+<template is="movie-list" data="{{ movies, loading, hasMore }}" />

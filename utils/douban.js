@@ -21,7 +21,7 @@ function fetchApi (type, params) {
  * @return {Promise}       包含抓取任务的Promise
  */
 function find (type, page = 1, count = 20, search = '') {
-  const params = { start: (page - 1) * count, count: count, city: getApp().data.currentCity }
+  const params = { start: (page - 1) * count, count: count, city: getApp().globalData.currentCity }
   return fetchApi(type, search ? Object.assign(params, { q: search }) : params)
     .then(res => res.data)
 }

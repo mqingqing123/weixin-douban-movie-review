@@ -1,0 +1,44 @@
+.list {
+  height: 100%;
+  margin:40rpx 0 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  font-size:24rpx;  
+}
+.list .item {
+  display: flex;
+  flex-direction: column;
+  width: 200rpx;
+  margin:0 25rpx 40rpx 25rpx;
+}
+.list .item>image {
+  width: 200rpx;
+  height: 270rpx;
+}
+.list .item>text {
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  line-height: 1.8;
+  margin-top: 10rpx;
+}
+.list .tips {
+  display: flex;
+  justify-content: center;
+  /*align-items: center;*/
+  width: 750rpx;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  color: #ccc;
+}
+.list .tips image,
+.list .tips text {
+  vertical-align: middle;
+}
+.list .tips image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}

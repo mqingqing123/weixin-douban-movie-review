@@ -1,8 +1,36 @@
 //app.js
+
+// WeChat API 模块  用于将微信官方`API`封装为`Promise`方式
+const wechat = require('./utils/wechat.js')
+
+// Douban API 模块
+const douban = require('./utils/douban.js')
+
+// Baidu API 模块
+const baidu = require('./utils/baidu.js')
+
 App({
+  // Global shared 
+  globalData: {
+    userInfo: null,
+    name: 'Douban Movie Review',
+    version: '0.1.0',
+    currentCity: '成都'
+  },
+
+  // WeChat API
+  wechat: wechat,
+
+  // Douban API
+  douban: douban,
+
+  // Baidu API
+  baidu: baidu,
+
+  // 生命周期函数--监听小程序初始化
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
+    const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     console.log(logs)
     wx.setStorageSync('logs', logs)
@@ -14,6 +42,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -32,13 +61,27 @@ App({
               }
             }
           })
-        }else{
+        } else {
           console.log('未授权', res, res.authSetting)
         }
       }
-    })
-  },
-  globalData: {
-    userInfo: null
+    }),
+
+    // 获取位置信息
+    wechat
+      .getLocation('wgs84')
+      .then(res => {
+        const { latitude, longitude } = res
+        return baidu.getCityName(latitude, longitude)
+      })
+      .then(name => {
+        console.log(name)
+        this.globalData.currentCity = name.replace('市', '')
+        console.log(`currentCity : ${this.globalData.currentCity}`)
+      })
+      .catch(err => {
+        this.globalData.currentCity = '成都'
+        console.error(err)
+      })
   }
 })

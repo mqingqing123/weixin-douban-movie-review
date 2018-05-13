@@ -1,0 +1,73 @@
+@import "../common/stars.wxss" ;
+
+.board {
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+.board-item {
+  display: flex;
+  flex-direction: column;
+  /*cursor: pointer;*/
+  font-size: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+}
+.board-item + .board-item{
+  margin: 30rpx 0;
+}
+.board-item .title {
+  display: flex; 
+  margin: 10rpx 0 20rpx 0;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+}
+.board-item .title text::before{
+  display: inline-flex;  
+  content:'';
+  width: 10rpx;
+  height: 33rpx;
+  background-color: #3fbc54;
+  position: absolute;
+  left: -4rpx;
+}
+.board-item .title text {
+  flex: 1;
+}
+.board-item .title view{
+  color: #3fbc54;
+}
+.board-item .title image {
+  height: 20rpx;
+  width: 20rpx;
+  margin-left: 6rpx;
+}
+.board-item .content {
+  height: 330rpx;
+}
+.board-item .content .inner {
+  display: flex;
+  flex-direction: row;
+  height: 330rpx;
+  width: 900rpx;
+}
+.board-item .content .inner .movie-item {
+  display: flex;
+  flex-direction: column;
+  width: 180rpx;
+  margin: 10rpx;
+}
+.board-item .content .inner .movie-item>image {
+  width: 180rpx;
+  height: 250rpx;
+}
+.board-item .content .inner .movie-item>text {
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  line-height: 1.8;
+  margin-top: 10rpx;
+}
+
