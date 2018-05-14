@@ -1,13 +1,9 @@
-'use strict';
-
 // 获取全局应用程序实例对象
-var app = getApp();
+const app = getApp()
 
 // 创建页面实例对象
 Page({
-  /**
-   * 页面的初始数据
-   */
+  // 页面的初始数据
   data: {
     title: '豆瓣影评',
     titleText: '利用豆瓣、百度位置等API整合微信小程序上,用户在小程序上查看电影榜单、搜索电影、查看电影信息及影评。',
@@ -19,16 +15,13 @@ Page({
   },
 
   getUserInfo: function getUserInfo() {
-    // var that = this;
-    // app.wechat.getUserInfo().then(function (res) {
+    // app.wechat.getUserInfo().then(res => {
     //   return that.setData({ userInfo: res.userInfo });
     // });
   },
 
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 生命周期函数--监听页面加载
   onLoad: function onLoad() {
     // app.wechat.login().then(function (res) {
     //   if (res.code) {
@@ -38,6 +31,7 @@ Page({
     //   }
     // });
   },
+  
   imgTap: function imgTap(){
     wx.previewImage({
       current: 'http://www.yinwubang.top/others/khcode.jpg', // 当前显示图片的http链接

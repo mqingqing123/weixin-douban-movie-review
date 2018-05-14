@@ -33,6 +33,5 @@ module.exports = {
   getUserInfo,
   setStorage,
   getStorage,
-  getLocation,
-  original: wx
+  getLocation
 }

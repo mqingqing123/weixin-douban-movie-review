@@ -1,6 +1,6 @@
 <import src="../common/stars.wxml" />
 <view class="container">
-  <loading hidden="{{ !loading }}">加载中...</loading>
+  <!-- <loading hidden="{{ !loading }}"></loading> -->
   <view wx:if="{{movie.images.large}}">
     <image class="head-img" src="{{movie.images.large}}" mode="aspectFill"/>
     <view class="head-img-hover">
