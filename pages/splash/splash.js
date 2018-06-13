@@ -22,7 +22,7 @@ Page({
             return resolve(res.data)
           }
           // 已经过期
-          console.log('uncached')
+          console.log('last_splash_data outdated')
           return resolve(null)
         })
         .catch(e => resolve(null))
@@ -35,6 +35,13 @@ Page({
     })
   },
 
+  swiperChange(event) {
+    console.log(event)
+  },
+
+  swiperAnimationFinish(event) {
+    console.log(event)
+  },
 
   // 生命周期函数--监听页面加载
   onLoad() {
@@ -52,7 +59,7 @@ Page({
               expires: Date.now() + 1 * 24 * 60 * 60 * 1000
             })
           })
-          .then(() => console.log('storage last splash data'))
+          .then(() => console.log('seted last_splash_data'))
       })
   },
 

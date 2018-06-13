@@ -6,22 +6,21 @@ Page({
   //  页面的初始数据
   data: {
     title: '',
-    loading: true,
     movie: {}
   },
 
   // 生命周期函数--监听页面加载
   onLoad(params) {
-    wx.showLoading()
+    wx.showLoading({ title: '加载中' })
 
     app.douban.findOne(params.id)
       .then(d => {
-        this.setData({ title: d.title, movie: d, loading: false })
+        this.setData({ title: d.title, movie: d })
         wx.setNavigationBarTitle({ title: d.title })
         wx.hideLoading()
       })
       .catch(e => {
-        this.setData({ title: '获取数据异常', movie: {}, loading: false })
+        this.setData({ title: '获取数据异常', movie: {} })
         console.error(e)
         wx.hideLoading()
       });
