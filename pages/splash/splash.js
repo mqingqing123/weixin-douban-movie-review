@@ -5,7 +5,7 @@ const app = getApp();
 Page({
   // 页面的初始数据
   data: {
-    indicatorDots: true,
+    indicatorDots: false,
     indicatorColor: "rgba(255,255,255,1)",
     indicatorActiveColor: "#3fbc54",
     movies: [],
