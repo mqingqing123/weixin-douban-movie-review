@@ -28,10 +28,11 @@ App({
   baidu: baidu,
 
   // 生命周期函数--监听小程序初始化
-  onLaunch: function () {
+  onLaunch() {
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
+    if(logs.length > 10) logs.length = 10;
     console.log(logs)
     wx.setStorageSync('logs', logs)
 
