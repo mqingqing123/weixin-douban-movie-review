@@ -6,5 +6,5 @@
       <image src="{{ item.images.large }}" class="slide-image" mode="aspectFill"/>
     </swiper-item>
   </swiper>
-   <button class="start" bindtap="handleStart">立即进入</button> 
+   <button class="start" bindtap="handleStart" wx:if="{{loading}}">立即进入</button> 
 </view>

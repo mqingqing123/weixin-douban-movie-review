@@ -9,7 +9,7 @@ Page({
     indicatorColor: "rgba(255,255,255,1)",
     indicatorActiveColor: "#3fbc54",
     movies: [],
-    loading: true
+    loading: false
   },
 
   getCache() {
@@ -48,12 +48,12 @@ Page({
     this.getCache()
       .then(cache => {
         if (cache) {
-          return this.setData({ movies: cache.movies, loading: false })
+          return this.setData({ movies: cache.movies, loading: true })
         }
 
         app.douban.find('coming_soon', 1, 3)
           .then(d => {
-            this.setData({ movies: d.subjects, loading: false })
+            this.setData({ movies: d.subjects, loading: true })
             return app.wechat.setStorage('last_splash_data', {
               movies: d.subjects,
               expires: Date.now() + 1 * 24 * 60 * 60 * 1000
